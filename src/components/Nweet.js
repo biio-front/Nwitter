@@ -1,4 +1,4 @@
-import { dbService } from 'fbase';
+import { dbService, storageService } from 'fbase';
 import React, { useState } from 'react';
 
 const Nweet = ({ nweetObj, isOwner }) => {
@@ -8,6 +8,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const ok = window.confirm('Are you sure you want to delete this nweet?');
     if (ok) {
       await dbService.doc(`nweets/${nweetObj.id}`).delete();
+      if (nweetObj.attachmentUrl) {
+        await storageService.refFromURL(nweetObj.attachmentUrl).delete();
+      }
     }
   }
   const onSubmit = async e => {
@@ -27,13 +30,18 @@ const Nweet = ({ nweetObj, isOwner }) => {
       {editing
         ? <>
           <form onSubmit={onSubmit}>
-            <input type="text" placeholder="Edit your nweet" value={newNweet} required onChange={onChange} />
+            <input type="text" placeholder="Edit your nweet" value={newNweet} required
+              onChange={onChange}
+            />
             <input type="submit" value="Update" />
           </form>
           <button onClick={toggleEditing}>Cancle</button>
         </>
         : <>
           <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentUrl &&
+            <img src={nweetObj.attachmentUrl} width="50px" />
+          }
           {isOwner &&
             <>
               <button onClick={onDeleteClick}>Delete Nweet</button>
