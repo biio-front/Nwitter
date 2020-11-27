@@ -1,0 +1,20 @@
+.nav{ display: flex; 
+  justify-content: center; 
+  margin-top: 50px; 
+}
+
+.nav__home{
+  margin-top: 10px;
+}
+
+.nav__profile{
+  margin-left: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12
+}
+
+.nav__profileStr{
+  margin-top: 10px;
+}

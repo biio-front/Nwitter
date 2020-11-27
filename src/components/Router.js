@@ -10,13 +10,13 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
         <Router>
             {isLoggedIn && <Navigation userObj={userObj} />}
             {isLoggedIn ?
-                <>
+                <div className="loginContainer">
                     <Route exact path='/'><Home userObj={userObj} /></Route>
                     <Route path='/profile'>
                         <Profile userObj={userObj} refreshUser={refreshUser} />
                     </Route>
                     <Redirect from='*' to='/' />
-                </>
+                </div>
                 : <>
                     <Route exact path='/' component={Auth} />
                     <Redirect from='*' to='/' />

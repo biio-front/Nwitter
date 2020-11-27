@@ -1,0 +1,50 @@
+.profileForm {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.profilePhoto,
+.profilePhoto img{
+  width: 200px;
+  height: 200px;
+  border-radius: 250px;
+  margin: 0 auto;
+
+}
+
+.profile__helper{
+  font-size: 12px;
+  background: none;
+  color: #04aaff;
+  border: none;
+}
+
+.profileForm__label{
+  color: #04aaff;
+  cursor: pointer;
+}
+
+.profileForm__label svg{
+  margin-left: 10px;
+}
+
+.profileForm__attach{
+  display: none;
+}
+
+.profileForm__name{
+  margin: 20px 0;
+}
+
+.profileForm__submit{
+  cursor: pointer;
+}
+
+.logOut {
+  margin-top: 50px;
+}

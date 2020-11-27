@@ -1,6 +1,9 @@
 import { authService, dbService, storageService } from 'fbase';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import 'css/Profile.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = ({ userObj, refreshUser }) => {
     const history = useHistory();
@@ -24,7 +27,7 @@ const Profile = ({ userObj, refreshUser }) => {
         }
         reader.readAsDataURL(photo);
     }
-    const onClearPhoto = () => setNewPhoto('');
+    const onClearPhoto = () => setNewPhoto(userObj.photoURL);
     const getMyNweets = async () => {
         const nweets = await dbService.collection('nweets')
             .where('creatorId', '==', userObj.uid)
@@ -52,27 +55,35 @@ const Profile = ({ userObj, refreshUser }) => {
             refreshUser();
         }
     }
-    return <>
-        <form onSubmit={onSubmit}>
-            <input type="text" placeholder="Display name" value={newDisplayName}
-                onChange={onChangeName}
-            />
-            <div className="profilePhoto" width="150px">
+    return <div className="container">
+        <form onSubmit={onSubmit} className="profileForm">
+            <div className="profilePhoto">
                 {newPhoto === userObj.photoURL ?
                     <>
-                        <img src={userObj.photoURL} alt="profile" width="150px" />
+                        <img src={userObj.photoURL} alt="profile" />
+                        <label for="attach-photo" className="profileForm__label">
+                            <span className="profile__helper">Add photos</span>
+                            <FontAwesomeIcon icon={faPlus} />
+                        </label>
+                        <input type="file" accept="image/*"
+                            id="attach-photo" className="profileForm__attach"
+                            onChange={onChangePhoto}
+                        />
                     </> :
                     <>
-                        <img src={newPhoto} alt="avatar" width="150px" />
-                        <button onClick={onClearPhoto}>Clear</button>
+                        <img src={newPhoto} alt="profile" />
+                        <button className="profile__helper" onClick={onClearPhoto}>Cancle</button>
                     </>
                 }
             </div>
-            <input type="file" accept="image/*" onChange={onChangePhoto} />
-            <input type="submit" value="Update Profile" />
+            <input type="text" autoFocus placeholder="Display name"
+                value={newDisplayName} className="profileForm__name"
+                onChange={onChangeName}
+            />
+            <input type="submit" value="Update Profile" className="profileForm__submit" />
         </form>
-        <button onClick={onLogOutClick}>Log Out</button>
-    </>
+        <button className="formBtn cancelBtn logOut" onClick={onLogOutClick}>Log Out</button>
+    </div>
 }
 
 export default Profile;
