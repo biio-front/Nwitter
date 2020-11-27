@@ -6,7 +6,7 @@ useing API:
 - Auth: [createUserWithEmailAndPassword](https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#createuserwithemailandpassword), [signInWithEmailAndPassword](https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signinwithemailandpassword), [onAuthStateChanged](https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#onauthstatechanged), [signInWithPopup](https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signinwithpopup), [signOut](https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signout).  
 - [GoogleAuthProvider](https://firebase.google.com/docs/reference/js/firebase.auth.GoogleAuthProvider?authuser=0)  
 - [GithubAuthProvider](https://firebase.google.com/docs/reference/js/firebase.auth.GithubAuthProvider?authuser=0)  
-- [User](https://firebase.google.com/docs/reference/js/firebase.User?authuser=0) : [updateProfile](https://firebase.google.com/docs/reference/js/firebase.User?authuser=0#updateprofile)
+- [User](https://firebase.google.com/docs/reference/js/firebase.User?authuser=0) : [updateProfile](https://firebase.google.com/docs/reference/js/firebase.User?authuser=0#updateprofile), [displayName](https://firebase.google.com/docs/reference/js/firebase.User#displayname), [photoURL]:(https://firebase.google.com/docs/reference/js/firebase.User#photourl)
 
 
 ## firebase.firestore
